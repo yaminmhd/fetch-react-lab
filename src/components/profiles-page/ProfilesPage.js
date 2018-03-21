@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import Profile from '../profile/Profile';
 class ProfilesPage extends Component {
   constructor() {
     super();
@@ -9,18 +9,34 @@ class ProfilesPage extends Component {
   }
 
   componentDidMount() {
-    fetch("https://randomuser.me/api?results=3")
+    fetch("https://randomuser.me/api?results=100")
       .then(data => {
         return data.json();
       })
       .then(data => data.results)
-      .then(data => this.setState({ profiles: data }));
+      .then(data => {
+        console.log(data);
+        return this.setState({ profiles: data });
+      })
+
   }
 
   render() {
-    return this.state.profiles.map((profile, i) => {
-      return <li key={i}>{profile.name.first}</li>;
-    });
+    return (
+      this.state.profiles.map((profile, i) => {
+        return (
+          <div key={i}>
+            <Profile profileCard={profile}/>
+          </div>
+        )
+      })
+    )
+
+    // <ProfileIcon key={i} imgUrl={profile.picture.large} />
+    // <ProfileName key={i} nameObj={profile.name}/>
+    // return this.state.profiles.map((profile, i) => {
+    //   return <img key={i} src={profile.picture.large}/>
+    // });
   }
 }
 

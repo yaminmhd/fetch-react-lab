@@ -1,0 +1,13 @@
+.wrapper{
+  max-width: 330px;
+  margin: 10px auto;
+  border: 2px solid black;
+  background: aquamarine;
+  border-radius: 5%;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
+
+.leftSide{
+  display: flex
+}
